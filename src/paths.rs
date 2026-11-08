@@ -1,7 +1,7 @@
 //! Where the game files are. Nothing from the game ships with the project: people copy their own
-//! `DATA` and `LEVELS` folders into `game/` (next to the program or the project), or point
-//! `LMS_GAME_DIR` at a folder holding them. An older layout, an `Example Maps` folder with the
-//! map folders and `DATA` side by side, is found too.
+//! `DATA` and `LEVELS` folders next to the program, or into `game/` (next to the program or the
+//! project), or point `LMS_GAME_DIR` at a folder holding them. An older layout, an `Example Maps`
+//! folder with the map folders and `DATA` side by side, is found too.
 
 use std::path::{Path, PathBuf};
 
@@ -28,6 +28,12 @@ fn bases() -> Vec<PathBuf> {
 pub fn game_root() -> Option<PathBuf> {
     if let Some(p) = std::env::var_os("LMS_GAME_DIR").map(PathBuf::from).filter(|p| p.is_dir()) {
         return Some(p);
+    }
+    // DATA / LEVELS right next to the program.
+    if let Some(dir) = std::env::current_exe().ok().and_then(|e| e.parent().map(|p| p.to_path_buf()))
+        && is_game_dir(&dir)
+    {
+        return Some(dir);
     }
     let bases = bases();
     bases.iter().map(|b| b.join("game")).find(|p| is_game_dir(p)).or_else(|| bases.iter().map(|b| b.join("Example Maps")).find(|p| p.is_dir()))

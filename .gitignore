@@ -6,3 +6,6 @@
 !/game/DATA/.gitkeep
 /game/LEVELS/*
 !/game/LEVELS/.gitkeep
+
+# Built programs (copied from target/release)
+/compiled

@@ -10,7 +10,7 @@ targets the 4.17-era client and reads and writes both kinds of map:
 
 ## Game files
 
-No game files are included. Copy your own into the `game` folder (see `game/README.md`):
+No game files are included. Put your own `DATA` and `LEVELS` folders next to the program (`lol-map-studio.exe`), or into the `game` folder (see `game/README.md`):
 
 ```
 game/
