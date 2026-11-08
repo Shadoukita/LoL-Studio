@@ -1568,9 +1568,9 @@ property uchar red\nproperty uchar green\nproperty uchar blue\nelement face 1\np
 
     #[test]
     fn league_garen_skn() {
-        // Game files are not part of the repository: set LMS_EXAMPLE_MAPS to an "Example Maps" folder.
-        let base = std::env::var("LMS_EXAMPLE_MAPS").unwrap_or_else(|_| "../Example Maps".into());
-        let root_buf = Path::new(&base).join("DATA").join("Characters").join("Garen");
+        // Game files are not part of the repository (see game/README.md); skipped without them.
+        let Some(data) = crate::paths::data_dir() else { return };
+        let root_buf = data.join("Characters").join("Garen");
         let root = root_buf.as_path();
         if !root.exists() {
             return;
@@ -1610,8 +1610,7 @@ property uchar red\nproperty uchar green\nproperty uchar blue\nelement face 1\np
 
     #[test]
     fn league_turret_sco() {
-        let base = std::env::var("LMS_EXAMPLE_MAPS").unwrap_or_else(|_| "../Example Maps".into());
-        let dir_buf = Path::new(&base).join("Map1").join("Scene");
+        let dir_buf = crate::paths::map_dir("Map1").join("Scene");
         let dir = dir_buf.as_path();
         if !dir.exists() {
             return;

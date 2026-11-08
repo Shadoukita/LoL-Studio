@@ -26,4 +26,5 @@ pub mod worldtools;
 pub mod map_settings;
 pub mod meshops;
 pub mod online_assets;
+pub mod paths;
 pub mod texture_edit;

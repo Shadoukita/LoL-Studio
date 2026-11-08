@@ -10,18 +10,24 @@ targets the 4.17-era client and reads and writes both kinds of map:
 
 ## Game files
 
-No game files are included. The editor and the command-line tools look for a folder named
-`Example Maps` next to the project (or above the executable) holding map folders such as `Map1`,
-the game's `DATA` folder (characters, particles, HUD) and optional collections such as
-`Season1/Map8`. Tests that need game files skip themselves when it is missing; set
-`LMS_EXAMPLE_MAPS` to point them at another folder.
+No game files are included. Copy your own into the `game` folder (see `game/README.md`):
+
+```
+game/
+  DATA/     the game's DATA folder (characters, particles, HUD)
+  LEVELS/   map folders: Map1, map11, ..., optional collections such as Season1/Map8
+```
+
+The editor and `lmscli` find `game/` next to the program or the working folder (or above
+them); `LMS_GAME_DIR` points them at another folder holding `DATA` and `LEVELS`. Both folders
+are ignored by git. Tests that need game files skip themselves when they are missing.
 
 ## Build and run
 
 ```powershell
 cargo build --release
 .\target\release\lol-map-studio.exe                      # start screen
-.\target\release\lol-map-studio.exe "..\Example Maps\Map1"  # open a map directly
+.\target\release\lol-map-studio.exe game\LEVELS\Map1  # open a map directly
 ```
 
 ## What it does
@@ -166,7 +172,7 @@ Lanes stay clear: the scenery tools leave out any model whose footprint would re
 
 **Scenery tools for the AI.** scenery_wall (a wall made of models along a line, the ground under it unwalkable) and scenery_fill (every wall area dressed with chosen models as real props, edges and inside, optionally another model for the mirrored half: same positions, different art per side). Model selectors "@Map:texture[:minHeight-maxHeight]" (e.g. "@Season1-Map8:frozen_props_tree_02:350-1200") pick models by texture, since names like "lambert #12" depend on what is loaded. The playability check also checks every camp: on a lane (PROBLEM under 500 units, warning under 900), reachable from its base, reachable through passages 240+ wide, clearing size.
 
-**Season 1 maps.** Example Maps/Season1/MapN (Season 1 Summoner's Rift, Harrowing Rift, Proving Grounds, Twisted Treeline, Crystal Scar) join the scenery library as "Season1-MapN" (Scenery from); older .tga texture references are resolved to the .dds files.
+**Season 1 maps.** game/LEVELS/Season1/MapN (Season 1 Summoner's Rift, Harrowing Rift, Proving Grounds, Twisted Treeline, Crystal Scar) join the scenery library as "Season1-MapN" (Scenery from); older .tga texture references are resolved to the .dds files.
 
 **Lava.** Look: "lava" turns deep water into a glowing lava surface (unwalkable) instead of the water plane.
 
@@ -214,7 +220,7 @@ The 2D and 3D views draw what the game draws:
 - Shading follows the client's own HLSL (`Shaders/HLSL/Environment`): lit materials, four-blend
   ground, decals, wall of grass and baked WGEO.
 - The sun and ambient colours come from `terrain.inibin [Sun]`.
-- With the game's `DATA` folder next to the examples (`Example Maps/DATA`), turrets, inhibitors and
+- With the game's `DATA` folder in `game/DATA`, turrets, inhibitors and
   nexuses are drawn with their character models. Textures that `room.mat` takes from DATA are found
   as well.
 
@@ -223,9 +229,9 @@ The 2D and 3D views draw what the game draws:
 `lmscli` (built alongside) runs the checks used during development:
 
 ```powershell
-.\target\release\lmscli.exe roundtrip "..\Example Maps\Map1" "..\Example Maps\map11"
-.\target\release\lmscli.exe edittest  "..\Example Maps\Map1" C:\Temp\Map1-edit
-.\target\release\lmscli.exe new       "..\Example Maps\Map1" C:\Temp\Map30 12000 [--blank]
+.\target\release\lmscli.exe roundtrip game\LEVELS\Map1 game\LEVELS\map11
+.\target\release\lmscli.exe edittest  game\LEVELS\Map1 C:\Temp\Map1-edit
+.\target\release\lmscli.exe new       game\LEVELS\Map1 C:\Temp\Map30 12000 [--blank]
 .\target\release\lmscli.exe validate  C:\Temp\Map30
 ```
 

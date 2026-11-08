@@ -29,6 +29,9 @@ impl GameData {
         if let Some(c) = configured {
             cands.push(c.to_path_buf());
         }
+        if let Some(d) = crate::paths::data_dir() {
+            cands.push(d);
+        }
         if let Some(m) = map_dir {
             let mut d = m.parent();
             while let Some(p) = d {

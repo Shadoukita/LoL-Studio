@@ -262,20 +262,9 @@ pub struct App {
     exporting: Vec<String>,
 }
 
+/// The folder with the map folders (game/LEVELS, see lol_map_studio::paths).
 fn example_maps_dir() -> Option<PathBuf> {
-    let mut cands = Vec::new();
-    if let Ok(exe) = std::env::current_exe() {
-        let mut d = exe.parent().map(|p| p.to_path_buf());
-        while let Some(p) = d {
-            cands.push(p.join("Example Maps"));
-            d = p.parent().map(|x| x.to_path_buf());
-        }
-    }
-    if let Ok(cwd) = std::env::current_dir() {
-        cands.push(cwd.join("Example Maps"));
-        cands.push(cwd.join("..").join("Example Maps"));
-    }
-    cands.into_iter().find(|p| p.is_dir())
+    lol_map_studio::paths::levels_dir()
 }
 
 impl App {
@@ -1541,7 +1530,7 @@ impl App {
         };
         if self.champion.is_none() {
             let Some(data) = &self.data else {
-                self.error("Play needs the game's DATA folder (Example Maps/DATA) for the champion.");
+                self.error("Play needs the game's DATA folder (copy it into game/DATA) for the champion.");
                 return;
             };
             match lol_map_studio::champion::Champion::load(&data.root, "KatarinaV2") {

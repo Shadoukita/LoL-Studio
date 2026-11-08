@@ -91,7 +91,7 @@ fn main() -> Result<()> {
         }
         Some("laneprops") => {
             let l = lol_map_studio::layout::Layout::load(&std::fs::read_to_string(&args[1])?)?;
-            let lib = lol_map_studio::props::library_from(&[PathBuf::from("../Example Maps/Map1"), PathBuf::from("../Example Maps/Season1")]);
+            let lib = lol_map_studio::props::library_from(&[lv("Map1"), lv("Season1")]);
             let seg = |p: [f32; 2], a: [f32; 2], b: [f32; 2]| { let ab = [b[0] - a[0], b[1] - a[1]]; let t = (((p[0] - a[0]) * ab[0] + (p[1] - a[1]) * ab[1]) / (ab[0] * ab[0] + ab[1] * ab[1]).max(1e-6)).clamp(0.0, 1.0); (a[0] + ab[0] * t - p[0]).hypot(a[1] + ab[1] * t - p[1]) };
             let mut counts: std::collections::BTreeMap<String, (usize, f32, f32, f32)> = Default::default();
             for p in &l.props {
@@ -121,7 +121,7 @@ fn main() -> Result<()> {
             }
         }
         Some("propinfo") => {
-            let lib = lol_map_studio::props::library_from(&[PathBuf::from("../Example Maps/Map1"), PathBuf::from("../Example Maps/Season1")]);
+            let lib = lol_map_studio::props::library_from(&[lv("Map1"), lv("Season1")]);
             for k in lol_map_studio::ai_agent::expand_keys(&lib, &args[1..]) {
                 let k = &k;
                 match lib.get(k) {
@@ -134,8 +134,8 @@ fn main() -> Result<()> {
             use lol_map_studio::ai_agent as ag;
             let file = args.get(1).ok_or_else(|| anyhow::anyhow!("usage: lmscli agentscript <recipe.json> [out folder] [project.lmsmap]"))?;
             let script: serde_json::Value = serde_json::from_str(&std::fs::read_to_string(file)?)?;
-            let lib = lol_map_studio::props::library_from(&[PathBuf::from("../Example Maps/Map1"), PathBuf::from("../Example Maps/Season1")]);
-            let mut ws = ag::Workshop::new(Some(std::sync::Arc::new(lib)), Some(PathBuf::from("../Example Maps/Map1/Scene/Textures")), Vec::new());
+            let lib = lol_map_studio::props::library_from(&[lv("Map1"), lv("Season1")]);
+            let mut ws = ag::Workshop::new(Some(std::sync::Arc::new(lib)), Some(lv("Map1/Scene/Textures")), Vec::new());
             let t = std::time::Instant::now();
             for line in ag::run_script(&script, &mut ws, |_, _| {})? {
                 println!("  {line}");
@@ -146,7 +146,7 @@ fn main() -> Result<()> {
                 println!("project saved to {proj}");
             }
             if let Some(out) = args.get(2) {
-                let opt = lol_map_studio::layout_build::BuildOptions { rules_source: Some(PathBuf::from("../Example Maps/Map1")), preview: false, props: ws.lib.clone() };
+                let opt = lol_map_studio::layout_build::BuildOptions { rules_source: Some(lv("Map1")), preview: false, props: ws.lib.clone() };
                 let p = lol_map_studio::layout_build::build(&ws.l, &opt)?;
                 p.export(&PathBuf::from(out), true)?;
                 let again = MapProject::open(&PathBuf::from(out))?;
@@ -178,8 +178,8 @@ fn main() -> Result<()> {
             let prompt = args.get(1).cloned().unwrap_or_default();
             let mut plan = lol_map_studio::ai_map::plan_from_keywords(&prompt);
             println!("online: {:?}", plan.online.iter().map(|o| &o.query).collect::<Vec<_>>());
-            let mut lib = lol_map_studio::props::library_from(&[PathBuf::from("../Example Maps/Map1")]);
-            for line in lol_map_studio::ai_map::fetch_online(&mut plan, Some(&lib), Some(std::path::Path::new("../Example Maps/Map1/Scene/Textures"))) { println!("  {line}"); }
+            let mut lib = lol_map_studio::props::library_from(&[lv("Map1")]);
+            for line in lol_map_studio::ai_map::fetch_online(&mut plan, Some(&lib), Some(&lv("Map1/Scene/Textures"))) { println!("  {line}"); }
             lib.set_assets(lol_map_studio::asset::library_props());
             let l = lol_map_studio::ai_map::build_layout(&plan, Some(&lib), 30);
             let online = l.props.iter().filter(|p| p.prop.starts_with("asset:")).count();
@@ -193,9 +193,9 @@ fn main() -> Result<()> {
             println!("{} models; {q:?}: {:?}", cat.len(), hits.iter().take(5).map(|m| (&m.id, m.polycount)).collect::<Vec<_>>());
             let m = hits.first().ok_or_else(|| anyhow::anyhow!("no match"))?;
             let c = oa::category_for(m, "");
-            let lib = lol_map_studio::props::library_from(&[PathBuf::from("../Example Maps/Map1")]);
+            let lib = lol_map_studio::props::library_from(&[lv("Map1")]);
             let t = std::time::Instant::now();
-            let key = oa::add_classic(m, &c, Some(&lib), Some(std::path::Path::new("../Example Maps/Map1/Scene/Textures")))?;
+            let key = oa::add_classic(m, &c, Some(&lib), Some(&lv("Map1/Scene/Textures")))?;
             let name = key.trim_start_matches("asset:");
             let (a, _) = lol_map_studio::asset::load(&lol_map_studio::asset::asset_dir(name))?;
             let (lo, hi) = a.bounds();
@@ -204,7 +204,7 @@ fn main() -> Result<()> {
         }
         Some("dresstest") => {
             let mut l = lol_map_studio::layout::Layout::classic_start("T", 30, 12000.0);
-            let dirs: Vec<PathBuf> = std::fs::read_dir("../Example Maps")?.flatten().map(|e| e.path()).filter(|p| p.is_dir()).collect();
+            let dirs: Vec<PathBuf> = std::fs::read_dir(lol_map_studio::paths::levels_dir().unwrap_or_default())?.flatten().map(|e| e.path()).filter(|p| p.is_dir()).collect();
             let lib = lol_map_studio::props::library_from(&dirs);
             println!("sources {:?}", lib.sources());
             for m in [vec![], vec!["Map1".to_string()], vec!["map11".to_string()]] { println!("{m:?}: trees {:?} rocks {:?}", lib.default_forest_in(&m), lib.default_wall_rocks_in(&m)); }
@@ -439,7 +439,7 @@ pub fn layout_test(out: &str, rules: Option<&str>) -> Result<()> {
     let back = Layout::load(&text)?;
     println!("layout {}x{} cells, {} objectives, {} lanes, project file {} KB, reload equal: {}", l.nx, l.ny, l.objectives.len(), l.lanes.len(), text.len() / 1024, back == l);
     let t2 = std::time::Instant::now();
-    let lib = lol_map_studio::props::library_from(&[PathBuf::from("../Example Maps/Map1")]);
+    let lib = lol_map_studio::props::library_from(&[lv("Map1")]);
     let mut cats = std::collections::BTreeMap::new();
     for pd in &lib.props { *cats.entry(pd.category.clone()).or_insert(0) += 1; }
     println!("prop library: {} props in {:.1}s {:?}; forest {:?}; wall rocks {:?}", lib.props.len(), t2.elapsed().as_secs_f32(), cats, lib.default_forest(), lib.default_wall_rocks());
@@ -564,7 +564,7 @@ pub fn import_test(map: &str, out: &str) -> Result<()> {
     l2.add_effect("Fire_Cauldron.troy", [7000.0, 7000.0], 0.0, 0.0);
     l2.add_light([7000.0, 7000.0], 150.0, [255, 120, 40], 20.0, 600.0, 1.0);
     l2.paint_surface(7400.0, 6600.0, 250.0, false, Surface::Wall);
-    let lib = lol_map_studio::props::library_from(&[PathBuf::from("../Example Maps/Map1")]);
+    let lib = lol_map_studio::props::library_from(&[lv("Map1")]);
     if let Some(r) = lib.props.iter().find(|p| p.category == "Rocks") {
         let k = r.key.clone();
         l2.add_prop(&k, [6500.0, 6500.0], 30.0, 1.0);
@@ -627,4 +627,9 @@ pub fn settings_test(map: &str) -> Result<()> {
     let changed: Vec<&str> = built.files.iter().filter(|f| orig.file(&f.path).is_none_or(|o| o.bytes().ok() != f.bytes().ok())).map(|f| f.path.as_str()).collect();
     println!("files changed on the opened map: {changed:?}");
     Ok(())
+}
+
+/// A map folder under game/LEVELS (or the older Example Maps folder).
+fn lv(name: &str) -> PathBuf {
+    lol_map_studio::paths::map_dir(name)
 }

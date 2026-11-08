@@ -1,2 +1,8 @@
 /target
 *.lmsmap
+
+# Game files are brought by each user (see game/README.md), never committed.
+/game/DATA/*
+!/game/DATA/.gitkeep
+/game/LEVELS/*
+!/game/LEVELS/.gitkeep

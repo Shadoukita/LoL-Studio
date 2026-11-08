@@ -405,8 +405,7 @@ mod tests {
     use super::*;
 
     fn data_root() -> Option<PathBuf> {
-        let p = Path::new(env!("CARGO_MANIFEST_DIR")).join("../Example Maps/DATA");
-        p.is_dir().then_some(p)
+        crate::paths::data_dir()
     }
 
     #[test]

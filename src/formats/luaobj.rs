@@ -224,7 +224,7 @@ pub fn call_args(data: &[u8], func: &str) -> Result<Vec<Vec<LuaArg>>> {
 mod tests {
     #[test]
     fn map1_turrets() {
-        let p = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../Example Maps/Map1/Scripts/CreateLevelProps.luaobj");
+        let p = crate::paths::map_dir("Map1").join("Scripts/CreateLevelProps.luaobj");
         let Ok(b) = std::fs::read(&p) else { return };
         let calls = super::call_args(&b, "CreateChildTurret").unwrap();
         assert_eq!(calls.len(), 24);
