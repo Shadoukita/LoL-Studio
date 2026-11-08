@@ -1,0 +1,34 @@
+[package]
+name = "lol-map-studio"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.104"
+base64 = "0.23.1"
+bytemuck = { version = "1.25.2", features = ["derive"] }
+eframe = { version = "0.37", default-features = false, features = ["glow", "default_fonts", "wayland", "x11", "clipboard", "links"] }
+egui_glow = "0.37"
+glow = "0.17"
+gltf = { version = "1.4.1", features = ["import", "utils"] }
+fbxcel-dom = "0.0.10"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "tga", "bmp"] }
+rayon = "1.12.0"
+rfd = "0.18.0"
+serde = { version = "1.0.229", features = ["derive"] }
+ureq = "3.5"
+serde_json = "1.0.154"
+
+[[bin]]
+name = "lol-map-studio"
+path = "src/main.rs"
+
+[[bin]]
+name = "lmscli"
+path = "src/bin/lmscli.rs"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3

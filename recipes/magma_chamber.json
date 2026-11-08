@@ -1,0 +1,5974 @@
+[
+ {
+  "tool": "new_map",
+  "name": "Magma Chamber",
+  "width": 21000,
+  "height": 10500,
+  "symmetry": "mirror_x",
+  "fill": "deep_water"
+ },
+ {
+  "tool": "look",
+  "scenery_from": [
+   "Map1",
+   "Season1-Map8",
+   "Season1-Map4",
+   "Season1-Map3"
+  ],
+  "lava": true,
+  "lava_from_x": 10500,
+  "wall_style": "league",
+  "dress_walls": false,
+  "mound": 50,
+  "river_depth": 160,
+  "sun_color": [
+   215,
+   175,
+   165
+  ],
+  "ambient_color": [
+   55,
+   55,
+   95
+  ],
+  "settings": {
+   "terrain.inibin|Fog*enable": "1",
+   "terrain.inibin|Fog*red": "70",
+   "terrain.inibin|Fog*green": "55",
+   "terrain.inibin|Fog*blue": "95",
+   "terrain.inibin|Fog*opacity": "0.18",
+   "Gamma.inibin|Gamma*Contrast": "1.08"
+  }
+ },
+ {
+  "tool": "set_texture",
+  "slot": "ground0",
+  "texture": "gen:ash",
+  "label": "Volcanic rock"
+ },
+ {
+  "tool": "set_texture",
+  "slot": "ground1",
+  "texture": "Chaos_dirt_moss_blend.dds",
+  "label": "Burned ground"
+ },
+ {
+  "tool": "set_texture",
+  "slot": "ground2",
+  "texture": "new_stone_road.dds",
+  "label": "Stone road"
+ },
+ {
+  "tool": "set_texture",
+  "slot": "ground3",
+  "texture": "gen:snow",
+  "label": "Snow"
+ },
+ {
+  "tool": "fetch_texture",
+  "query": "dark volcanic rock",
+  "slot": "ground0",
+  "label": "Volcanic rock"
+ },
+ {
+  "tool": "fetch_texture",
+  "query": "burned ground",
+  "slot": "ground1",
+  "label": "Burned ground"
+ },
+ {
+  "tool": "fetch_texture",
+  "query": "aerial snow",
+  "slot": "ground3",
+  "label": "Snow"
+ },
+ {
+  "tool": "fetch_texture",
+  "query": "snow floor",
+  "slot": "ground4",
+  "label": "Packed snow"
+ },
+ {
+  "tool": "make_texture",
+  "name": "mc_frost_base_floor",
+  "base": "order_tile_floor.dds",
+  "slot": "ground5",
+  "label": "Frost base floor",
+  "steps": [
+   {
+    "op": "tint",
+    "color": [
+     175,
+     205,
+     255
+    ],
+    "amount": 0.35
+   },
+   {
+    "op": "overlay",
+    "mask": "dark",
+    "threshold": 0.33,
+    "softness": 0.1,
+    "color": [
+     232,
+     240,
+     252
+    ],
+    "amount": 0.85
+   },
+   {
+    "op": "overlay",
+    "mask": "noise",
+    "threshold": 0.68,
+    "softness": 0.12,
+    "scale": 3,
+    "texture": "snow_floor_classic.png",
+    "amount": 0.75
+   },
+   {
+    "op": "speckle",
+    "color": [
+     250,
+     252,
+     255
+    ],
+    "density": 0.03,
+    "amount": 0.6
+   }
+  ]
+ },
+ {
+  "tool": "make_texture",
+  "name": "mc_ember_base_floor",
+  "base": "Chaos_BlurFloor2.dds",
+  "slot": "ground6",
+  "label": "Ember base floor",
+  "steps": [
+   {
+    "op": "desaturate",
+    "amount": 0.4
+   },
+   {
+    "op": "tint",
+    "color": [
+     105,
+     75,
+     70
+    ],
+    "amount": 0.4
+   },
+   {
+    "op": "brightness",
+    "factor": 0.8
+   },
+   {
+    "op": "overlay",
+    "mask": "noise",
+    "threshold": 0.66,
+    "softness": 0.12,
+    "scale": 3,
+    "texture": "cracked_red_ground_classic.png",
+    "amount": 0.6
+   },
+   {
+    "op": "cracks",
+    "color": [
+     255,
+     115,
+     30
+    ],
+    "scale": 3,
+    "width": 0.018,
+    "amount": 0.9
+   }
+  ]
+ },
+ {
+  "tool": "set_texture",
+  "slot": "ground7",
+  "texture": "Terrain_MRT_Flagstone_1_TX_CM.dds",
+  "label": "Flagstone"
+ },
+ {
+  "tool": "fetch_texture",
+  "query": "cracked red ground",
+  "slot": "ground8",
+  "label": "Cracked lava ground"
+ },
+ {
+  "tool": "make_texture",
+  "name": "mc_snowed_dirt",
+  "base": "order_dirt.dds",
+  "slot": "ground9",
+  "label": "Snowed dirt",
+  "steps": [
+   {
+    "op": "tint",
+    "color": [
+     150,
+     165,
+     200
+    ],
+    "amount": 0.25
+   },
+   {
+    "op": "overlay",
+    "mask": "noise",
+    "threshold": 0.5,
+    "softness": 0.14,
+    "scale": 5,
+    "texture": "snow_floor_classic.png",
+    "amount": 0.85
+   },
+   {
+    "op": "overlay",
+    "mask": "bright",
+    "threshold": 0.36,
+    "softness": 0.08,
+    "color": [
+     236,
+     242,
+     252
+    ],
+    "amount": 0.6
+   },
+   {
+    "op": "speckle",
+    "color": [
+     245,
+     248,
+     255
+    ],
+    "density": 0.04,
+    "amount": 0.7
+   }
+  ]
+ },
+ {
+  "tool": "make_texture",
+  "name": "mc_burned_grass",
+  "base": "grass_tx_cm.dds",
+  "slot": "ground10",
+  "label": "Burned grass",
+  "steps": [
+   {
+    "op": "desaturate",
+    "amount": 0.55
+   },
+   {
+    "op": "tint",
+    "color": [
+     150,
+     105,
+     55
+    ],
+    "amount": 0.45
+   },
+   {
+    "op": "brightness",
+    "factor": 0.95
+   },
+   {
+    "op": "overlay",
+    "mask": "noise",
+    "threshold": 0.6,
+    "softness": 0.15,
+    "scale": 5,
+    "texture": "Chaos_dirt.dds",
+    "amount": 0.55
+   },
+   {
+    "op": "speckle",
+    "color": [
+     70,
+     65,
+     62
+    ],
+    "density": 0.06,
+    "amount": 0.8
+   },
+   {
+    "op": "speckle",
+    "color": [
+     255,
+     120,
+     40
+    ],
+    "density": 0.006,
+    "amount": 0.9
+   }
+  ]
+ },
+ {
+  "tool": "make_texture",
+  "name": "mc_frost_road",
+  "base": "gravel_stone_TX_CM.dds",
+  "slot": "ground13",
+  "label": "Frosted road",
+  "steps": [
+   {
+    "op": "tint",
+    "color": [
+     180,
+     200,
+     240
+    ],
+    "amount": 0.3
+   },
+   {
+    "op": "overlay",
+    "mask": "dark",
+    "threshold": 0.2,
+    "softness": 0.06,
+    "color": [
+     235,
+     242,
+     252
+    ],
+    "amount": 0.55
+   },
+   {
+    "op": "overlay",
+    "mask": "noise",
+    "threshold": 0.7,
+    "softness": 0.1,
+    "scale": 4,
+    "texture": "snow_floor_classic.png",
+    "amount": 0.55
+   }
+  ]
+ },
+ {
+  "tool": "make_texture",
+  "name": "mc_scorched_road",
+  "base": "gravel_stone_TX_CM.dds",
+  "slot": "ground14",
+  "label": "Scorched road",
+  "steps": [
+   {
+    "op": "tint",
+    "color": [
+     130,
+     85,
+     65
+    ],
+    "amount": 0.45
+   },
+   {
+    "op": "brightness",
+    "factor": 0.78
+   },
+   {
+    "op": "speckle",
+    "color": [
+     60,
+     55,
+     52
+    ],
+    "density": 0.05,
+    "amount": 0.8
+   },
+   {
+    "op": "cracks",
+    "color": [
+     255,
+     120,
+     35
+    ],
+    "scale": 4,
+    "width": 0.012,
+    "amount": 0.75
+   }
+  ]
+ },
+ {
+  "tool": "set_texture",
+  "slot": "ground11",
+  "texture": "terrain_shared_mine_i_TX_CM.dds",
+  "label": "Mine ground"
+ },
+ {
+  "tool": "set_texture",
+  "slot": "ground12",
+  "texture": "terrain_shared_periphery_f_TX_CM.dds",
+  "label": "Rocky rim"
+ },
+ {
+  "tool": "set_texture",
+  "slot": "cliff",
+  "texture": "rocks.dds"
+ },
+ {
+  "tool": "set_texture",
+  "slot": "mound",
+  "texture": "rocks.dds"
+ },
+ {
+  "tool": "set_texture",
+  "slot": "brush",
+  "texture": "WallOfGrass.dds"
+ },
+ {
+  "tool": "paint",
+  "surface": "wall",
+  "shape": "polygon",
+  "points": [
+   [
+    168,
+    6468
+   ],
+   [
+    945,
+    7392
+   ],
+   [
+    2310,
+    8148
+   ],
+   [
+    4200,
+    8988
+   ],
+   [
+    6300,
+    9618
+   ],
+   [
+    8400,
+    9996
+   ],
+   [
+    10500,
+    10122
+   ],
+   [
+    12600,
+    9996
+   ],
+   [
+    14700,
+    9618
+   ],
+   [
+    16800,
+    8988
+   ],
+   [
+    18690,
+    8148
+   ],
+   [
+    20055,
+    7392
+   ],
+   [
+    20832,
+    6468
+   ],
+   [
+    20370,
+    5502
+   ],
+   [
+    19005,
+    4578
+   ],
+   [
+    17430,
+    3528
+   ],
+   [
+    15960,
+    2730
+   ],
+   [
+    13860,
+    2016
+   ],
+   [
+    11760,
+    1638
+   ],
+   [
+    10500,
+    1554
+   ],
+   [
+    9240,
+    1638
+   ],
+   [
+    7140,
+    2016
+   ],
+   [
+    5040,
+    2730
+   ],
+   [
+    3570,
+    3528
+   ],
+   [
+    1995,
+    4578
+   ],
+   [
+    630,
+    5502
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "circle",
+  "points": [
+   [
+    1470,
+    6552
+   ]
+  ],
+  "radius": 1250
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "circle",
+  "points": [
+   [
+    2940,
+    6552
+   ]
+  ],
+  "radius": 1350
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 3,
+  "shape": "polygon",
+  "points": [
+   [
+    0,
+    0
+   ],
+   [
+    10250,
+    0
+   ],
+   [
+    10250,
+    10500
+   ],
+   [
+    0,
+    10500
+   ]
+  ],
+  "radius": 500,
+  "strength": 1,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 3,
+  "shape": "polygon",
+  "points": [
+   [
+    10250,
+    0
+   ],
+   [
+    10500,
+    0
+   ],
+   [
+    10500,
+    10500
+   ],
+   [
+    10250,
+    10500
+   ]
+  ],
+  "radius": 300,
+  "strength": 0.45,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 4,
+  "points": [
+   [
+    5040,
+    7560
+   ],
+   [
+    6930,
+    5250
+   ],
+   [
+    8820,
+    3150
+   ],
+   [
+    7980,
+    8190
+   ],
+   [
+    4410,
+    3780
+   ],
+   [
+    9450,
+    4830
+   ],
+   [
+    6300,
+    8820
+   ],
+   [
+    3780,
+    5460
+   ]
+  ],
+  "radius": 800,
+  "strength": 0.55,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 1,
+  "points": [
+   [
+    15960,
+    7560
+   ],
+   [
+    14070,
+    5250
+   ],
+   [
+    12180,
+    3150
+   ],
+   [
+    13020,
+    8190
+   ],
+   [
+    16590,
+    3780
+   ],
+   [
+    11550,
+    4830
+   ],
+   [
+    14700,
+    8820
+   ],
+   [
+    17220,
+    5460
+   ]
+  ],
+  "radius": 800,
+  "strength": 0.6,
+  "mirror": false
+ },
+ {
+  "tool": "set_lane",
+  "lane": "top",
+  "width": 720,
+  "points": [
+   [
+    3150,
+    6888
+   ],
+   [
+    4095,
+    7896
+   ],
+   [
+    5670,
+    8694
+   ],
+   [
+    7770,
+    9240
+   ],
+   [
+    10500,
+    9387
+   ],
+   [
+    13230,
+    9240
+   ],
+   [
+    15330,
+    8694
+   ],
+   [
+    16905,
+    7896
+   ],
+   [
+    17850,
+    6888
+   ]
+  ]
+ },
+ {
+  "tool": "set_lane",
+  "lane": "mid",
+  "width": 720,
+  "points": [
+   [
+    3360,
+    6510
+   ],
+   [
+    17640,
+    6510
+   ]
+  ]
+ },
+ {
+  "tool": "set_lane",
+  "lane": "bot",
+  "width": 720,
+  "points": [
+   [
+    3150,
+    6132
+   ],
+   [
+    3990,
+    4662
+   ],
+   [
+    5670,
+    3150
+   ],
+   [
+    7770,
+    2310
+   ],
+   [
+    10500,
+    2142
+   ],
+   [
+    13230,
+    2310
+   ],
+   [
+    15330,
+    3150
+   ],
+   [
+    17010,
+    4662
+   ],
+   [
+    17850,
+    6132
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 420,
+  "points": [
+   [
+    10500,
+    9324
+   ],
+   [
+    10500,
+    7980
+   ],
+   [
+    10500,
+    6510
+   ],
+   [
+    10500,
+    3780
+   ],
+   [
+    10500,
+    2184
+   ]
+  ],
+  "mirror": false
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "circle",
+  "points": [
+   [
+    10500,
+    7980
+   ]
+  ],
+  "radius": 720,
+  "mirror": false
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "circle",
+  "points": [
+   [
+    10500,
+    3780
+   ]
+  ],
+  "radius": 760,
+  "mirror": false
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "circle",
+  "points": [
+   [
+    10500,
+    6468
+   ]
+  ],
+  "radius": 650,
+  "mirror": false
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "circle",
+  "points": [
+   [
+    10500,
+    10374
+   ]
+  ],
+  "radius": 520,
+  "mirror": false
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 360,
+  "points": [
+   [
+    10500,
+    9387
+   ],
+   [
+    10500,
+    10290
+   ]
+  ],
+  "mirror": false
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "circle",
+  "points": [
+   [
+    10500,
+    1176
+   ]
+  ],
+  "radius": 560,
+  "mirror": false
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 360,
+  "points": [
+   [
+    10500,
+    2142
+   ],
+   [
+    10500,
+    1260
+   ]
+  ],
+  "mirror": false
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    4788,
+    8232
+   ],
+   [
+    5418,
+    7812
+   ],
+   [
+    5985,
+    7518
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    5985,
+    7518
+   ],
+   [
+    6825,
+    7728
+   ],
+   [
+    7602,
+    7980
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    7602,
+    7980
+   ],
+   [
+    8295,
+    7728
+   ],
+   [
+    8925,
+    7434
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    8925,
+    7434
+   ],
+   [
+    9765,
+    7728
+   ],
+   [
+    10500,
+    7980
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    6405,
+    6510
+   ],
+   [
+    6216,
+    7014
+   ],
+   [
+    5985,
+    7518
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    9240,
+    6510
+   ],
+   [
+    9072,
+    6972
+   ],
+   [
+    8925,
+    7434
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    7098,
+    9198
+   ],
+   [
+    7245,
+    8400
+   ],
+   [
+    7602,
+    7980
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    5985,
+    7518
+   ],
+   [
+    6930,
+    7140
+   ],
+   [
+    8085,
+    7098
+   ],
+   [
+    8925,
+    7434
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    4662,
+    4368
+   ],
+   [
+    5040,
+    4788
+   ],
+   [
+    5145,
+    5082
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    5145,
+    5082
+   ],
+   [
+    6090,
+    4662
+   ],
+   [
+    7035,
+    4284
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    7035,
+    4284
+   ],
+   [
+    7770,
+    3948
+   ],
+   [
+    8820,
+    3780
+   ],
+   [
+    10500,
+    3780
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    6405,
+    6510
+   ],
+   [
+    6258,
+    5880
+   ],
+   [
+    5670,
+    5418
+   ],
+   [
+    5145,
+    5082
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    9240,
+    6510
+   ],
+   [
+    8925,
+    5880
+   ],
+   [
+    8568,
+    5292
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    8568,
+    5292
+   ],
+   [
+    7980,
+    4725
+   ],
+   [
+    7035,
+    4284
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    8568,
+    5292
+   ],
+   [
+    9555,
+    4578
+   ],
+   [
+    10500,
+    3780
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "path",
+  "width": 560,
+  "points": [
+   [
+    7098,
+    2352
+   ],
+   [
+    7245,
+    3360
+   ],
+   [
+    7035,
+    4284
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "circle",
+  "radius": 650,
+  "points": [
+   [
+    7602,
+    7980
+   ],
+   [
+    5985,
+    7518
+   ],
+   [
+    8925,
+    7434
+   ],
+   [
+    5145,
+    5082
+   ],
+   [
+    7035,
+    4284
+   ],
+   [
+    8568,
+    5292
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "ground",
+  "shape": "circle",
+  "radius": 380,
+  "points": [
+   [
+    7245,
+    8400
+   ],
+   [
+    7245,
+    3360
+   ]
+  ]
+ },
+ {
+  "tool": "paint",
+  "surface": "deep_water",
+  "shape": "circle",
+  "radius": 230,
+  "points": [
+   [
+    4872,
+    7182
+   ],
+   [
+    7602,
+    5775
+   ],
+   [
+    6090,
+    3990
+   ]
+  ]
+ },
+ {
+  "tool": "place",
+  "kind": "spawn",
+  "x": 900,
+  "z": 6552
+ },
+ {
+  "tool": "place",
+  "kind": "nexus",
+  "x": 2600,
+  "z": 6552
+ },
+ {
+  "tool": "place",
+  "kind": "turret",
+  "x": 3080,
+  "z": 6872,
+  "lane": "mid",
+  "tier": "nexus_a"
+ },
+ {
+  "tool": "place",
+  "kind": "turret",
+  "x": 3080,
+  "z": 6232,
+  "lane": "mid",
+  "tier": "nexus_b"
+ },
+ {
+  "tool": "place",
+  "kind": "minion_spawn",
+  "x": 3150,
+  "z": 6888,
+  "lane": "top"
+ },
+ {
+  "tool": "place",
+  "kind": "inhibitor",
+  "x": 4111,
+  "z": 7904,
+  "lane": "top"
+ },
+ {
+  "tool": "place",
+  "kind": "turret",
+  "x": 4736,
+  "z": 8221,
+  "lane": "top",
+  "tier": "inhibitor"
+ },
+ {
+  "tool": "place",
+  "kind": "turret",
+  "x": 6786,
+  "z": 8984,
+  "lane": "top",
+  "tier": "inner"
+ },
+ {
+  "tool": "place",
+  "kind": "turret",
+  "x": 8851,
+  "z": 9298,
+  "lane": "top",
+  "tier": "outer"
+ },
+ {
+  "tool": "place",
+  "kind": "minion_spawn",
+  "x": 3360,
+  "z": 6510,
+  "lane": "mid"
+ },
+ {
+  "tool": "place",
+  "kind": "inhibitor",
+  "x": 4610,
+  "z": 6510,
+  "lane": "mid"
+ },
+ {
+  "tool": "place",
+  "kind": "turret",
+  "x": 5310,
+  "z": 6510,
+  "lane": "mid",
+  "tier": "inhibitor"
+ },
+ {
+  "tool": "place",
+  "kind": "turret",
+  "x": 6860,
+  "z": 6510,
+  "lane": "mid",
+  "tier": "inner"
+ },
+ {
+  "tool": "place",
+  "kind": "turret",
+  "x": 8560,
+  "z": 6510,
+  "lane": "mid",
+  "tier": "outer"
+ },
+ {
+  "tool": "place",
+  "kind": "minion_spawn",
+  "x": 3150,
+  "z": 6132,
+  "lane": "bot"
+ },
+ {
+  "tool": "place",
+  "kind": "inhibitor",
+  "x": 3845,
+  "z": 4916,
+  "lane": "bot"
+ },
+ {
+  "tool": "place",
+  "kind": "turret",
+  "x": 4292,
+  "z": 4390,
+  "lane": "bot",
+  "tier": "inhibitor"
+ },
+ {
+  "tool": "place",
+  "kind": "turret",
+  "x": 5992,
+  "z": 3021,
+  "lane": "bot",
+  "tier": "inner"
+ },
+ {
+  "tool": "place",
+  "kind": "turret",
+  "x": 7955,
+  "z": 2299,
+  "lane": "bot",
+  "tier": "outer"
+ },
+ {
+  "tool": "place",
+  "kind": "wolves",
+  "x": 7602,
+  "z": 7980
+ },
+ {
+  "tool": "place",
+  "kind": "red_buff",
+  "x": 5985,
+  "z": 7518
+ },
+ {
+  "tool": "place",
+  "kind": "wraiths",
+  "x": 8925,
+  "z": 7434
+ },
+ {
+  "tool": "place",
+  "kind": "golems",
+  "x": 5145,
+  "z": 5082
+ },
+ {
+  "tool": "place",
+  "kind": "blue_buff",
+  "x": 7035,
+  "z": 4284
+ },
+ {
+  "tool": "place",
+  "kind": "wight",
+  "x": 8568,
+  "z": 5292
+ },
+ {
+  "tool": "place",
+  "kind": "baron",
+  "team": "neutral",
+  "mirror": false,
+  "x": 10500,
+  "z": 7980
+ },
+ {
+  "tool": "place",
+  "kind": "dragon",
+  "team": "neutral",
+  "mirror": false,
+  "x": 10500,
+  "z": 3780
+ },
+ {
+  "tool": "place",
+  "kind": "health_relic",
+  "team": "neutral",
+  "mirror": false,
+  "x": 10500,
+  "z": 10332
+ },
+ {
+  "tool": "place",
+  "kind": "health_relic",
+  "team": "neutral",
+  "mirror": false,
+  "x": 10500,
+  "z": 1218
+ },
+ {
+  "tool": "scenery_wall",
+  "points": [
+   [
+    1992,
+    4282
+   ],
+   [
+    2344,
+    4216
+   ],
+   [
+    2703,
+    4204
+   ],
+   [
+    3058,
+    4247
+   ],
+   [
+    3404,
+    4344
+   ],
+   [
+    3730,
+    4492
+   ],
+   [
+    4031,
+    4688
+   ],
+   [
+    4298,
+    4927
+   ],
+   [
+    4525,
+    5204
+   ],
+   [
+    4708,
+    5513
+   ],
+   [
+    4841,
+    5845
+   ],
+   [
+    4923,
+    6195
+   ],
+   [
+    4950,
+    6552
+   ],
+   [
+    4923,
+    6909
+   ],
+   [
+    4841,
+    7259
+   ],
+   [
+    4708,
+    7591
+   ],
+   [
+    4525,
+    7900
+   ],
+   [
+    4298,
+    8177
+   ],
+   [
+    4031,
+    8416
+   ],
+   [
+    3730,
+    8612
+   ],
+   [
+    3404,
+    8760
+   ],
+   [
+    3058,
+    8857
+   ],
+   [
+    2703,
+    8900
+   ],
+   [
+    2344,
+    8888
+   ],
+   [
+    1992,
+    8822
+   ]
+  ],
+  "keys": [
+   "@Season1-Map8:rock formations_1:80-400",
+   "@Season1-Map8:rock formations_2:80-400",
+   "@Season1-Map4:rock_uv1:120-400",
+   "@Map1:stonehenge_revised:200-450"
+  ],
+  "size": [
+   260,
+   380
+  ],
+  "spacing": 170,
+  "width": 300
+ },
+ {
+  "tool": "scenery_fill",
+  "edge_keys": [
+   "@Season1-Map8:rock formations_1:80-400",
+   "@Season1-Map8:rock formations_2:80-400",
+   "@Season1-Map4:rock_uv1:120-400",
+   "@Map1:stonehenge_revised:200-450"
+  ],
+  "edge_size": [
+   200,
+   360
+  ],
+  "edge_spacing": 150,
+  "inset": 0.3,
+  "fill_keys": [
+   "@Season1-Map8:frozen_props_tree_02:350-1200"
+  ],
+  "fill_size": [
+   420,
+   640
+  ],
+  "fill_spacing": 360,
+  "fill_chance": 0.8,
+  "mirror_keys": {
+   "@Season1-Map8:frozen_props_tree_02:350-1200": "@Season1-Map8:bunt_trees_charred_02:300-1200"
+  }
+ },
+ {
+  "tool": "scenery_wall",
+  "points": [
+   [
+    2520,
+    8526
+   ],
+   [
+    4410,
+    9324
+   ],
+   [
+    6300,
+    9828
+   ],
+   [
+    8400,
+    10164
+   ]
+  ],
+  "keys": [
+   "@Season1-Map8:stone04b:300-900",
+   "@Season1-Map8:sidestone:300-900"
+  ],
+  "size": [
+   700,
+   1000
+  ],
+  "spacing": 520,
+  "block": false
+ },
+ {
+  "tool": "scenery_wall",
+  "points": [
+   [
+    2520,
+    3990
+   ],
+   [
+    4200,
+    3024
+   ],
+   [
+    6300,
+    2268
+   ],
+   [
+    8400,
+    1806
+   ]
+  ],
+  "keys": [
+   "@Season1-Map8:stone04b:300-900",
+   "@Season1-Map8:sidestone:300-900"
+  ],
+  "size": [
+   700,
+   1000
+  ],
+  "spacing": 520,
+  "block": false
+ },
+ {
+  "tool": "scenery_wall",
+  "points": [
+   [
+    5156,
+    7182
+   ],
+   [
+    5118,
+    7040
+   ],
+   [
+    5014,
+    6936
+   ],
+   [
+    4872,
+    6899
+   ],
+   [
+    4730,
+    6936
+   ],
+   [
+    4626,
+    7040
+   ],
+   [
+    4589,
+    7182
+   ],
+   [
+    4626,
+    7324
+   ],
+   [
+    4730,
+    7428
+   ],
+   [
+    4872,
+    7466
+   ],
+   [
+    5014,
+    7428
+   ],
+   [
+    5118,
+    7324
+   ],
+   [
+    5156,
+    7182
+   ]
+  ],
+  "keys": [
+   "@Season1-Map8:rock formations_2:40-110",
+   "@Season1-Map8:rock formations_1:40-110",
+   "@Season1-Map8:city_crystal_formations:40-200"
+  ],
+  "size": [
+   90,
+   170
+  ],
+  "spacing": 110,
+  "block": false
+ },
+ {
+  "tool": "scenery_wall",
+  "points": [
+   [
+    7886,
+    5775
+   ],
+   [
+    7848,
+    5633
+   ],
+   [
+    7744,
+    5529
+   ],
+   [
+    7602,
+    5492
+   ],
+   [
+    7460,
+    5529
+   ],
+   [
+    7356,
+    5633
+   ],
+   [
+    7319,
+    5775
+   ],
+   [
+    7356,
+    5917
+   ],
+   [
+    7460,
+    6021
+   ],
+   [
+    7602,
+    6059
+   ],
+   [
+    7744,
+    6021
+   ],
+   [
+    7848,
+    5917
+   ],
+   [
+    7886,
+    5775
+   ]
+  ],
+  "keys": [
+   "@Season1-Map8:rock formations_2:40-110",
+   "@Season1-Map8:rock formations_1:40-110",
+   "@Season1-Map8:city_crystal_formations:40-200"
+  ],
+  "size": [
+   90,
+   170
+  ],
+  "spacing": 110,
+  "block": false
+ },
+ {
+  "tool": "scenery_wall",
+  "points": [
+   [
+    6374,
+    3990
+   ],
+   [
+    6336,
+    3848
+   ],
+   [
+    6232,
+    3744
+   ],
+   [
+    6090,
+    3707
+   ],
+   [
+    5948,
+    3744
+   ],
+   [
+    5844,
+    3848
+   ],
+   [
+    5807,
+    3990
+   ],
+   [
+    5844,
+    4132
+   ],
+   [
+    5948,
+    4236
+   ],
+   [
+    6090,
+    4274
+   ],
+   [
+    6232,
+    4236
+   ],
+   [
+    6336,
+    4132
+   ],
+   [
+    6374,
+    3990
+   ]
+  ],
+  "keys": [
+   "@Season1-Map8:rock formations_2:40-110",
+   "@Season1-Map8:rock formations_1:40-110",
+   "@Season1-Map8:city_crystal_formations:40-200"
+  ],
+  "size": [
+   90,
+   170
+  ],
+  "spacing": 110,
+  "block": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 35,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 11068,
+  "z": 8377
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 35,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 9932,
+  "z": 8377
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 70,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 10737,
+  "z": 8631
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 70,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 10263,
+  "z": 8631
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 110,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 10263,
+  "z": 8631
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 110,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 10737,
+  "z": 8631
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 145,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 9932,
+  "z": 8377
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 145,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 11068,
+  "z": 8377
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 35,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 11102,
+  "z": 3358
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 35,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 9898,
+  "z": 3358
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 70,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 10751,
+  "z": 3089
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 70,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 10249,
+  "z": 3089
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 110,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 10249,
+  "z": 3089
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 110,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 10751,
+  "z": 3089
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 145,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 9898,
+  "z": 3358
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 145,
+  "scale": 2.2,
+  "mirror": false,
+  "x": 11102,
+  "z": 3358
+ },
+ {
+  "tool": "prop_row",
+  "key": "@Season1-Map8:decals_lane_runestones_e",
+  "points": [
+   [
+    4095,
+    7896
+   ],
+   [
+    5670,
+    8694
+   ],
+   [
+    7770,
+    9240
+   ],
+   [
+    9870,
+    9366
+   ]
+  ],
+  "spacing": 1700
+ },
+ {
+  "tool": "prop_row",
+  "key": "@Season1-Map8:decals_lane_runestones_e",
+  "points": [
+   [
+    4200,
+    6510
+   ],
+   [
+    10080,
+    6510
+   ]
+  ],
+  "spacing": 1700
+ },
+ {
+  "tool": "prop_row",
+  "key": "@Season1-Map8:decals_lane_runestones_e",
+  "points": [
+   [
+    3990,
+    4662
+   ],
+   [
+    5670,
+    3150
+   ],
+   [
+    7770,
+    2310
+   ],
+   [
+    9870,
+    2163
+   ]
+  ],
+  "spacing": 1700
+ },
+ {
+  "tool": "prop_row",
+  "key": "@Season1-Map8:torch_tx_dm:250-400",
+  "points": [
+   [
+    4200,
+    6940
+   ],
+   [
+    10080,
+    6940
+   ]
+  ],
+  "spacing": 2100,
+  "scale": 0.9
+ },
+ {
+  "tool": "prop_row",
+  "key": "@Season1-Map8:torch_tx_dm:250-400",
+  "points": [
+   [
+    4200,
+    6080
+   ],
+   [
+    10080,
+    6080
+   ]
+  ],
+  "spacing": 2100,
+  "scale": 0.9
+ },
+ {
+  "tool": "prop_row",
+  "key": "@Season1-Map8:torch_tx_dm:250-400",
+  "points": [
+   [
+    1731,
+    7854
+   ],
+   [
+    1361,
+    7652
+   ],
+   [
+    1070,
+    7347
+   ],
+   [
+    883,
+    6969
+   ],
+   [
+    819,
+    6552
+   ],
+   [
+    883,
+    6135
+   ],
+   [
+    1070,
+    5757
+   ],
+   [
+    1361,
+    5452
+   ],
+   [
+    1731,
+    5250
+   ]
+  ],
+  "spacing": 650,
+  "scale": 0.8
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 0,
+  "scale": 1.6,
+  "x": 7476,
+  "z": 8400
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 60,
+  "scale": 1.6,
+  "x": 7361,
+  "z": 8200
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 120,
+  "scale": 1.6,
+  "x": 7130,
+  "z": 8200
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 180,
+  "scale": 1.6,
+  "x": 7014,
+  "z": 8400
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 240,
+  "scale": 1.6,
+  "x": 7130,
+  "z": 8600
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 300,
+  "scale": 1.6,
+  "x": 7361,
+  "z": 8600
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 0,
+  "scale": 1.6,
+  "x": 7476,
+  "z": 3360
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 60,
+  "scale": 1.6,
+  "x": 7361,
+  "z": 3160
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 120,
+  "scale": 1.6,
+  "x": 7130,
+  "z": 3160
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 180,
+  "scale": 1.6,
+  "x": 7014,
+  "z": 3360
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 240,
+  "scale": 1.6,
+  "x": 7130,
+  "z": 3560
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map8:city_crystal_formations:40-200",
+  "yaw": 300,
+  "scale": 1.6,
+  "x": 7361,
+  "z": 3560
+ },
+ {
+  "tool": "light",
+  "x": 7245,
+  "z": 8400,
+  "color": [
+   90,
+   170,
+   255
+  ],
+  "radius": 520,
+  "intensity": 1.8,
+  "lift": 150,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 13755,
+  "z": 8400,
+  "color": [
+   255,
+   90,
+   170
+  ],
+  "radius": 520,
+  "intensity": 1.8,
+  "lift": 150,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Fire_Cauldron_Blue.troy",
+  "x": 7245,
+  "z": 8400,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Fire_Cauldron_Purple.troy",
+  "x": 13755,
+  "z": 8400,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 7245,
+  "z": 3360,
+  "color": [
+   90,
+   170,
+   255
+  ],
+  "radius": 520,
+  "intensity": 1.8,
+  "lift": 150,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 13755,
+  "z": 3360,
+  "color": [
+   255,
+   90,
+   170
+  ],
+  "radius": 520,
+  "intensity": 1.8,
+  "lift": 150,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Fire_Cauldron_Blue.troy",
+  "x": 7245,
+  "z": 3360,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Fire_Cauldron_Purple.troy",
+  "x": 13755,
+  "z": 3360,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 4872,
+  "z": 7182,
+  "color": [
+   120,
+   180,
+   255
+  ],
+  "radius": 700,
+  "intensity": 1.4,
+  "lift": 120,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 16128,
+  "z": 7182,
+  "color": [
+   255,
+   110,
+   40
+  ],
+  "radius": 700,
+  "intensity": 1.4,
+  "lift": 120,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_groundMist_01.troy",
+  "x": 4872,
+  "z": 7182,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_Fire_01.troy",
+  "x": 16128,
+  "z": 7182,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 7602,
+  "z": 5775,
+  "color": [
+   120,
+   180,
+   255
+  ],
+  "radius": 700,
+  "intensity": 1.4,
+  "lift": 120,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 13398,
+  "z": 5775,
+  "color": [
+   255,
+   110,
+   40
+  ],
+  "radius": 700,
+  "intensity": 1.4,
+  "lift": 120,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_groundMist_01.troy",
+  "x": 7602,
+  "z": 5775,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_Fire_01.troy",
+  "x": 13398,
+  "z": 5775,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 6090,
+  "z": 3990,
+  "color": [
+   120,
+   180,
+   255
+  ],
+  "radius": 700,
+  "intensity": 1.4,
+  "lift": 120,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 14910,
+  "z": 3990,
+  "color": [
+   255,
+   110,
+   40
+  ],
+  "radius": 700,
+  "intensity": 1.4,
+  "lift": 120,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_groundMist_01.troy",
+  "x": 6090,
+  "z": 3990,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_Fire_01.troy",
+  "x": 14910,
+  "z": 3990,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_Snow_01.troy",
+  "x": 4830,
+  "z": 8190,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_Chimney_Smoke.troy",
+  "x": 16170,
+  "z": 8190,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_Snow_01.troy",
+  "x": 6300,
+  "z": 3990,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_Chimney_Smoke.troy",
+  "x": 14700,
+  "z": 3990,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_Snow_01.troy",
+  "x": 8820,
+  "z": 6930,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_Chimney_Smoke.troy",
+  "x": 12180,
+  "z": 6930,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_Snow_01.troy",
+  "x": 3360,
+  "z": 4830,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_Chimney_Smoke.troy",
+  "x": 17640,
+  "z": 4830,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_Snow_01.troy",
+  "x": 8400,
+  "z": 2520,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_Chimney_Smoke.troy",
+  "x": 12600,
+  "z": 2520,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_MB_Snow_01.troy",
+  "x": 7980,
+  "z": 9030,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Env_Chimney_Smoke.troy",
+  "x": 13020,
+  "z": 9030,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 4200,
+  "z": 6552,
+  "color": [
+   90,
+   140,
+   255
+  ],
+  "radius": 2800,
+  "intensity": 1.1,
+  "lift": 300,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 16800,
+  "z": 6552,
+  "color": [
+   255,
+   110,
+   40
+  ],
+  "radius": 2800,
+  "intensity": 1.1,
+  "lift": 300,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 7980,
+  "z": 7770,
+  "color": [
+   110,
+   160,
+   255
+  ],
+  "radius": 1800,
+  "intensity": 0.9,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 13020,
+  "z": 7770,
+  "color": [
+   255,
+   120,
+   50
+  ],
+  "radius": 1800,
+  "intensity": 0.9,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 7980,
+  "z": 4620,
+  "color": [
+   110,
+   160,
+   255
+  ],
+  "radius": 1800,
+  "intensity": 0.9,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 13020,
+  "z": 4620,
+  "color": [
+   255,
+   120,
+   50
+  ],
+  "radius": 1800,
+  "intensity": 0.9,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "color": [
+   255,
+   60,
+   60
+  ],
+  "radius": 900,
+  "intensity": 1.6,
+  "mirror": false,
+  "x": 10500,
+  "z": 7980
+ },
+ {
+  "tool": "light",
+  "color": [
+   200,
+   80,
+   255
+  ],
+  "radius": 900,
+  "intensity": 1.6,
+  "mirror": false,
+  "x": 10500,
+  "z": 3780
+ },
+ {
+  "tool": "effect",
+  "name": "FireTorch_Blue.troy",
+  "x": 4200,
+  "z": 6510,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "FireTorch_Med.troy",
+  "x": 16800,
+  "z": 6510,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 5,
+  "points": [
+   [
+    1100,
+    6552
+   ],
+   [
+    2300,
+    6552
+   ],
+   [
+    3100,
+    6552
+   ],
+   [
+    2900,
+    7252
+   ],
+   [
+    2900,
+    5852
+   ],
+   [
+    2000,
+    7252
+   ],
+   [
+    2000,
+    5852
+   ],
+   [
+    4111,
+    7904
+   ],
+   [
+    4610,
+    6510
+   ],
+   [
+    3845,
+    4916
+   ]
+  ],
+  "radius": 900,
+  "strength": 1,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 6,
+  "points": [
+   [
+    19900,
+    6552
+   ],
+   [
+    18700,
+    6552
+   ],
+   [
+    17900,
+    6552
+   ],
+   [
+    18100,
+    7252
+   ],
+   [
+    18100,
+    5852
+   ],
+   [
+    19000,
+    7252
+   ],
+   [
+    19000,
+    5852
+   ],
+   [
+    16889,
+    7904
+   ],
+   [
+    16390,
+    6510
+   ],
+   [
+    17155,
+    4916
+   ]
+  ],
+  "radius": 900,
+  "strength": 1,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 2,
+  "points": [
+   [
+    3560,
+    7326
+   ],
+   [
+    3766,
+    7545
+   ],
+   [
+    3971,
+    7763
+   ]
+  ],
+  "radius": 330,
+  "strength": 1
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 2,
+  "points": [
+   [
+    3960,
+    6510
+   ],
+   [
+    4260,
+    6510
+   ],
+   [
+    4560,
+    6510
+   ]
+  ],
+  "radius": 330,
+  "strength": 1
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 2,
+  "points": [
+   [
+    3448,
+    5611
+   ],
+   [
+    3597,
+    5351
+   ],
+   [
+    3745,
+    5090
+   ]
+  ],
+  "radius": 330,
+  "strength": 1
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 13,
+  "points": [
+   [
+    3150,
+    6888
+   ],
+   [
+    3328,
+    7078
+   ],
+   [
+    3506,
+    7267
+   ],
+   [
+    3683,
+    7457
+   ],
+   [
+    3861,
+    7647
+   ],
+   [
+    4039,
+    7836
+   ],
+   [
+    4254,
+    7977
+   ],
+   [
+    4486,
+    8094
+   ],
+   [
+    4718,
+    8212
+   ],
+   [
+    4950,
+    8329
+   ],
+   [
+    5182,
+    8447
+   ],
+   [
+    5414,
+    8564
+   ],
+   [
+    5646,
+    8682
+   ],
+   [
+    5895,
+    8753
+   ],
+   [
+    6147,
+    8818
+   ],
+   [
+    6398,
+    8883
+   ],
+   [
+    6650,
+    8949
+   ],
+   [
+    6902,
+    9014
+   ],
+   [
+    7153,
+    9080
+   ],
+   [
+    7405,
+    9145
+   ],
+   [
+    7657,
+    9211
+   ],
+   [
+    7913,
+    9248
+   ],
+   [
+    8172,
+    9262
+   ],
+   [
+    8432,
+    9276
+   ],
+   [
+    8692,
+    9290
+   ],
+   [
+    8951,
+    9304
+   ],
+   [
+    9211,
+    9318
+   ],
+   [
+    9470,
+    9332
+   ],
+   [
+    9730,
+    9346
+   ],
+   [
+    9990,
+    9360
+   ],
+   [
+    10249,
+    9373
+   ],
+   [
+    3360,
+    6510
+   ],
+   [
+    3620,
+    6510
+   ],
+   [
+    3880,
+    6510
+   ],
+   [
+    4140,
+    6510
+   ],
+   [
+    4400,
+    6510
+   ],
+   [
+    4660,
+    6510
+   ],
+   [
+    4920,
+    6510
+   ],
+   [
+    5180,
+    6510
+   ],
+   [
+    5440,
+    6510
+   ],
+   [
+    5700,
+    6510
+   ],
+   [
+    5960,
+    6510
+   ],
+   [
+    6220,
+    6510
+   ],
+   [
+    6480,
+    6510
+   ],
+   [
+    6740,
+    6510
+   ],
+   [
+    7000,
+    6510
+   ],
+   [
+    7260,
+    6510
+   ],
+   [
+    7520,
+    6510
+   ],
+   [
+    7780,
+    6510
+   ],
+   [
+    8040,
+    6510
+   ],
+   [
+    8300,
+    6510
+   ],
+   [
+    8560,
+    6510
+   ],
+   [
+    8820,
+    6510
+   ],
+   [
+    9080,
+    6510
+   ],
+   [
+    9340,
+    6510
+   ],
+   [
+    9600,
+    6510
+   ],
+   [
+    9860,
+    6510
+   ],
+   [
+    10120,
+    6510
+   ],
+   [
+    10380,
+    6510
+   ],
+   [
+    3150,
+    6132
+   ],
+   [
+    3279,
+    5906
+   ],
+   [
+    3408,
+    5681
+   ],
+   [
+    3537,
+    5455
+   ],
+   [
+    3666,
+    5229
+   ],
+   [
+    3795,
+    5003
+   ],
+   [
+    3924,
+    4778
+   ],
+   [
+    4084,
+    4577
+   ],
+   [
+    4278,
+    4403
+   ],
+   [
+    4471,
+    4229
+   ],
+   [
+    4664,
+    4055
+   ],
+   [
+    4857,
+    3881
+   ],
+   [
+    5051,
+    3707
+   ],
+   [
+    5244,
+    3534
+   ],
+   [
+    5437,
+    3360
+   ],
+   [
+    5630,
+    3186
+   ],
+   [
+    5862,
+    3073
+   ],
+   [
+    6103,
+    2977
+   ],
+   [
+    6345,
+    2880
+   ],
+   [
+    6586,
+    2784
+   ],
+   [
+    6828,
+    2687
+   ],
+   [
+    7069,
+    2590
+   ],
+   [
+    7310,
+    2494
+   ],
+   [
+    7552,
+    2397
+   ],
+   [
+    7795,
+    2308
+   ],
+   [
+    8054,
+    2292
+   ],
+   [
+    8314,
+    2277
+   ],
+   [
+    8573,
+    2261
+   ],
+   [
+    8833,
+    2245
+   ],
+   [
+    9092,
+    2229
+   ],
+   [
+    9352,
+    2213
+   ],
+   [
+    9611,
+    2197
+   ],
+   [
+    9871,
+    2181
+   ],
+   [
+    10130,
+    2165
+   ],
+   [
+    10390,
+    2149
+   ]
+  ],
+  "radius": 300,
+  "strength": 0.9,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 14,
+  "points": [
+   [
+    17850,
+    6888
+   ],
+   [
+    17672,
+    7078
+   ],
+   [
+    17494,
+    7267
+   ],
+   [
+    17317,
+    7457
+   ],
+   [
+    17139,
+    7647
+   ],
+   [
+    16961,
+    7836
+   ],
+   [
+    16746,
+    7977
+   ],
+   [
+    16514,
+    8094
+   ],
+   [
+    16282,
+    8212
+   ],
+   [
+    16050,
+    8329
+   ],
+   [
+    15818,
+    8447
+   ],
+   [
+    15586,
+    8564
+   ],
+   [
+    15354,
+    8682
+   ],
+   [
+    15105,
+    8753
+   ],
+   [
+    14853,
+    8818
+   ],
+   [
+    14602,
+    8883
+   ],
+   [
+    14350,
+    8949
+   ],
+   [
+    14098,
+    9014
+   ],
+   [
+    13847,
+    9080
+   ],
+   [
+    13595,
+    9145
+   ],
+   [
+    13343,
+    9211
+   ],
+   [
+    13087,
+    9248
+   ],
+   [
+    12828,
+    9262
+   ],
+   [
+    12568,
+    9276
+   ],
+   [
+    12308,
+    9290
+   ],
+   [
+    12049,
+    9304
+   ],
+   [
+    11789,
+    9318
+   ],
+   [
+    11530,
+    9332
+   ],
+   [
+    11270,
+    9346
+   ],
+   [
+    11010,
+    9360
+   ],
+   [
+    10751,
+    9373
+   ],
+   [
+    17640,
+    6510
+   ],
+   [
+    17380,
+    6510
+   ],
+   [
+    17120,
+    6510
+   ],
+   [
+    16860,
+    6510
+   ],
+   [
+    16600,
+    6510
+   ],
+   [
+    16340,
+    6510
+   ],
+   [
+    16080,
+    6510
+   ],
+   [
+    15820,
+    6510
+   ],
+   [
+    15560,
+    6510
+   ],
+   [
+    15300,
+    6510
+   ],
+   [
+    15040,
+    6510
+   ],
+   [
+    14780,
+    6510
+   ],
+   [
+    14520,
+    6510
+   ],
+   [
+    14260,
+    6510
+   ],
+   [
+    14000,
+    6510
+   ],
+   [
+    13740,
+    6510
+   ],
+   [
+    13480,
+    6510
+   ],
+   [
+    13220,
+    6510
+   ],
+   [
+    12960,
+    6510
+   ],
+   [
+    12700,
+    6510
+   ],
+   [
+    12440,
+    6510
+   ],
+   [
+    12180,
+    6510
+   ],
+   [
+    11920,
+    6510
+   ],
+   [
+    11660,
+    6510
+   ],
+   [
+    11400,
+    6510
+   ],
+   [
+    11140,
+    6510
+   ],
+   [
+    10880,
+    6510
+   ],
+   [
+    10620,
+    6510
+   ],
+   [
+    17850,
+    6132
+   ],
+   [
+    17721,
+    5906
+   ],
+   [
+    17592,
+    5681
+   ],
+   [
+    17463,
+    5455
+   ],
+   [
+    17334,
+    5229
+   ],
+   [
+    17205,
+    5003
+   ],
+   [
+    17076,
+    4778
+   ],
+   [
+    16916,
+    4577
+   ],
+   [
+    16722,
+    4403
+   ],
+   [
+    16529,
+    4229
+   ],
+   [
+    16336,
+    4055
+   ],
+   [
+    16143,
+    3881
+   ],
+   [
+    15949,
+    3707
+   ],
+   [
+    15756,
+    3534
+   ],
+   [
+    15563,
+    3360
+   ],
+   [
+    15370,
+    3186
+   ],
+   [
+    15138,
+    3073
+   ],
+   [
+    14897,
+    2977
+   ],
+   [
+    14655,
+    2880
+   ],
+   [
+    14414,
+    2784
+   ],
+   [
+    14172,
+    2687
+   ],
+   [
+    13931,
+    2590
+   ],
+   [
+    13690,
+    2494
+   ],
+   [
+    13448,
+    2397
+   ],
+   [
+    13205,
+    2308
+   ],
+   [
+    12946,
+    2292
+   ],
+   [
+    12686,
+    2277
+   ],
+   [
+    12427,
+    2261
+   ],
+   [
+    12167,
+    2245
+   ],
+   [
+    11908,
+    2229
+   ],
+   [
+    11648,
+    2213
+   ],
+   [
+    11389,
+    2197
+   ],
+   [
+    11129,
+    2181
+   ],
+   [
+    10870,
+    2165
+   ],
+   [
+    10610,
+    2149
+   ]
+  ],
+  "radius": 300,
+  "strength": 0.9,
+  "mirror": false
+ },
+ {
+  "tool": "copy_scenery",
+  "name": "SR Order fountain",
+  "map": "Map1",
+  "center": [
+   104,
+   287
+  ],
+  "radius": 700,
+  "textures": [
+   "shrine.dds",
+   "stone_steps.dds",
+   "base_stone_steps.dds",
+   "shop_base.dds"
+  ],
+  "facing": [
+   1,
+   1
+  ],
+  "floor": 93
+ },
+ {
+  "tool": "copy_scenery",
+  "name": "SR Chaos fountain",
+  "map": "Map1",
+  "center": [
+   13998,
+   14185
+  ],
+  "radius": 700,
+  "textures": [
+   "chaos_shrine.dds",
+   "stone_steps.dds",
+   "base_stone_steps.dds",
+   "shop_base.dds"
+  ],
+  "facing": [
+   -1,
+   -1
+  ],
+  "floor": 93
+ },
+ {
+  "tool": "place_prop",
+  "key": "asset:SR Order fountain",
+  "x": 900,
+  "z": 6552,
+  "yaw": 0,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "asset:SR Chaos fountain",
+  "x": 20100,
+  "z": 6552,
+  "yaw": 180,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:shop_trol_prop:270-290",
+  "x": 500,
+  "z": 7182,
+  "yaw": 200,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:shop_trol_prop:270-290",
+  "x": 20500,
+  "z": 7182,
+  "yaw": -20,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:shop_trol_character",
+  "x": 630,
+  "z": 7042,
+  "yaw": 200,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:shop_trol_character",
+  "x": 20370,
+  "z": 7042,
+  "yaw": -20,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_nexus_stonebase.",
+  "x": 2600,
+  "z": 6552,
+  "yaw": 0,
+  "scale": 0.55,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_nexus_stonebase.",
+  "x": 18400,
+  "z": 6552,
+  "yaw": 180,
+  "scale": 0.55,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_inhibitor_stonebase_b",
+  "x": 4111,
+  "z": 7904,
+  "yaw": 0,
+  "scale": 0.45,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_inhibitor_stonebase_b",
+  "x": 16889,
+  "z": 7904,
+  "yaw": 180,
+  "scale": 0.45,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 4736,
+  "z": 8221,
+  "yaw": 0,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 16264,
+  "z": 8221,
+  "yaw": 180,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 6786,
+  "z": 8984,
+  "yaw": 0,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 14214,
+  "z": 8984,
+  "yaw": 180,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 8851,
+  "z": 9298,
+  "yaw": 0,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 12149,
+  "z": 9298,
+  "yaw": 180,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_inhibitor_stonebase_b",
+  "x": 4610,
+  "z": 6510,
+  "yaw": 0,
+  "scale": 0.45,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_inhibitor_stonebase_b",
+  "x": 16390,
+  "z": 6510,
+  "yaw": 180,
+  "scale": 0.45,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 5310,
+  "z": 6510,
+  "yaw": 0,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 15690,
+  "z": 6510,
+  "yaw": 180,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 6860,
+  "z": 6510,
+  "yaw": 0,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 14140,
+  "z": 6510,
+  "yaw": 180,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 8560,
+  "z": 6510,
+  "yaw": 0,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 12440,
+  "z": 6510,
+  "yaw": 180,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_inhibitor_stonebase_b",
+  "x": 3845,
+  "z": 4916,
+  "yaw": 0,
+  "scale": 0.45,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_inhibitor_stonebase_b",
+  "x": 17155,
+  "z": 4916,
+  "yaw": 180,
+  "scale": 0.45,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 4292,
+  "z": 4390,
+  "yaw": 0,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 16708,
+  "z": 4390,
+  "yaw": 180,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 5992,
+  "z": 3021,
+  "yaw": 0,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 15008,
+  "z": 3021,
+  "yaw": 180,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 7955,
+  "z": 2299,
+  "yaw": 0,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 13045,
+  "z": 2299,
+  "yaw": 180,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 3080,
+  "z": 6872,
+  "yaw": 0,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 17920,
+  "z": 6872,
+  "yaw": 180,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 3080,
+  "z": 6232,
+  "yaw": 0,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Season1-Map3:tutorial_turret_stonebase:40-60",
+  "x": 17920,
+  "z": 6232,
+  "yaw": 180,
+  "scale": 0.4,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": true
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:orderpantheon:400-450",
+  "x": 1500,
+  "z": 7902,
+  "yaw": 0,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:chaos_shrine:140-170",
+  "x": 19500,
+  "z": 7902,
+  "yaw": 180,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:orderpantheon:400-450",
+  "x": 1500,
+  "z": 5202,
+  "yaw": 0,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:chaos_shrine:140-170",
+  "x": 19500,
+  "z": 5202,
+  "yaw": 180,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:orderpantheon:400-450",
+  "x": 2500,
+  "z": 8002,
+  "yaw": 0,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:chaos_shrine:140-170",
+  "x": 18500,
+  "z": 8002,
+  "yaw": 180,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:orderpantheon:400-450",
+  "x": 2500,
+  "z": 5102,
+  "yaw": 0,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:chaos_shrine:140-170",
+  "x": 18500,
+  "z": 5102,
+  "yaw": 180,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:orderpantheon:400-450",
+  "x": 700,
+  "z": 7352,
+  "yaw": 0,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:chaos_shrine:140-170",
+  "x": 20300,
+  "z": 7352,
+  "yaw": 180,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:orderpantheon:400-450",
+  "x": 700,
+  "z": 5752,
+  "yaw": 0,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "place_prop",
+  "key": "@Map1:chaos_shrine:140-170",
+  "x": 20300,
+  "z": 5752,
+  "yaw": 180,
+  "scale": 1,
+  "lift": 0,
+  "mirror": false,
+  "walk_through": false
+ },
+ {
+  "tool": "light",
+  "x": 1500,
+  "z": 7902,
+  "color": [
+   110,
+   160,
+   255
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 19500,
+  "z": 7902,
+  "color": [
+   255,
+   110,
+   50
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 1500,
+  "z": 5202,
+  "color": [
+   110,
+   160,
+   255
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 19500,
+  "z": 5202,
+  "color": [
+   255,
+   110,
+   50
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 2500,
+  "z": 8002,
+  "color": [
+   110,
+   160,
+   255
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 18500,
+  "z": 8002,
+  "color": [
+   255,
+   110,
+   50
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 2500,
+  "z": 5102,
+  "color": [
+   110,
+   160,
+   255
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 18500,
+  "z": 5102,
+  "color": [
+   255,
+   110,
+   50
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 700,
+  "z": 7352,
+  "color": [
+   110,
+   160,
+   255
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 20300,
+  "z": 7352,
+  "color": [
+   255,
+   110,
+   50
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 700,
+  "z": 5752,
+  "color": [
+   110,
+   160,
+   255
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 20300,
+  "z": 5752,
+  "color": [
+   255,
+   110,
+   50
+  ],
+  "radius": 600,
+  "intensity": 1.4,
+  "lift": 250,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 900,
+  "z": 6552,
+  "color": [
+   140,
+   200,
+   255
+  ],
+  "radius": 1400,
+  "intensity": 1.6,
+  "lift": 300,
+  "mirror": false
+ },
+ {
+  "tool": "light",
+  "x": 20100,
+  "z": 6552,
+  "color": [
+   255,
+   150,
+   80
+  ],
+  "radius": 1400,
+  "intensity": 1.6,
+  "lift": 300,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Fire_Cauldron_Blue.troy",
+  "x": 900,
+  "z": 6552,
+  "mirror": false
+ },
+ {
+  "tool": "effect",
+  "name": "Fire_Cauldron.troy",
+  "x": 20100,
+  "z": 6552,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 7,
+  "points": [
+   [
+    10500,
+    6468
+   ],
+   [
+    10500,
+    7980
+   ],
+   [
+    10500,
+    3780
+   ]
+  ],
+  "radius": 650,
+  "strength": 0.9,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 7,
+  "points": [
+   [
+    10500,
+    8820
+   ],
+   [
+    10500,
+    7245
+   ],
+   [
+    10500,
+    5145
+   ],
+   [
+    10500,
+    2940
+   ]
+  ],
+  "radius": 260,
+  "strength": 0.8,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 9,
+  "points": [
+   [
+    4788,
+    8232
+   ],
+   [
+    4998,
+    8092
+   ],
+   [
+    5208,
+    7952
+   ],
+   [
+    5418,
+    7812
+   ],
+   [
+    5607,
+    7714
+   ],
+   [
+    5796,
+    7616
+   ],
+   [
+    5985,
+    7518
+   ],
+   [
+    5985,
+    7518
+   ],
+   [
+    6195,
+    7571
+   ],
+   [
+    6405,
+    7623
+   ],
+   [
+    6615,
+    7676
+   ],
+   [
+    6825,
+    7728
+   ],
+   [
+    7084,
+    7812
+   ],
+   [
+    7343,
+    7896
+   ],
+   [
+    7602,
+    7980
+   ],
+   [
+    7602,
+    7980
+   ],
+   [
+    7833,
+    7896
+   ],
+   [
+    8064,
+    7812
+   ],
+   [
+    8295,
+    7728
+   ],
+   [
+    8505,
+    7630
+   ],
+   [
+    8715,
+    7532
+   ],
+   [
+    8925,
+    7434
+   ],
+   [
+    8925,
+    7434
+   ],
+   [
+    9135,
+    7508
+   ],
+   [
+    9345,
+    7581
+   ],
+   [
+    9555,
+    7655
+   ],
+   [
+    9765,
+    7728
+   ],
+   [
+    10010,
+    7812
+   ],
+   [
+    10255,
+    7896
+   ],
+   [
+    10500,
+    7980
+   ],
+   [
+    6405,
+    6510
+   ],
+   [
+    6311,
+    6762
+   ],
+   [
+    6216,
+    7014
+   ],
+   [
+    6101,
+    7266
+   ],
+   [
+    5985,
+    7518
+   ],
+   [
+    9240,
+    6510
+   ],
+   [
+    9156,
+    6741
+   ],
+   [
+    9072,
+    6972
+   ],
+   [
+    8999,
+    7203
+   ],
+   [
+    8925,
+    7434
+   ],
+   [
+    7098,
+    9198
+   ],
+   [
+    7147,
+    8932
+   ],
+   [
+    7196,
+    8666
+   ],
+   [
+    7245,
+    8400
+   ],
+   [
+    7424,
+    8190
+   ],
+   [
+    7602,
+    7980
+   ],
+   [
+    5985,
+    7518
+   ],
+   [
+    6221,
+    7424
+   ],
+   [
+    6458,
+    7329
+   ],
+   [
+    6694,
+    7235
+   ],
+   [
+    6930,
+    7140
+   ],
+   [
+    7161,
+    7132
+   ],
+   [
+    7392,
+    7123
+   ],
+   [
+    7623,
+    7115
+   ],
+   [
+    7854,
+    7106
+   ],
+   [
+    8085,
+    7098
+   ],
+   [
+    8295,
+    7182
+   ],
+   [
+    8505,
+    7266
+   ],
+   [
+    8715,
+    7350
+   ],
+   [
+    8925,
+    7434
+   ],
+   [
+    4662,
+    4368
+   ],
+   [
+    4788,
+    4508
+   ],
+   [
+    4914,
+    4648
+   ],
+   [
+    5040,
+    4788
+   ],
+   [
+    5093,
+    4935
+   ],
+   [
+    5145,
+    5082
+   ],
+   [
+    5145,
+    5082
+   ],
+   [
+    5381,
+    4977
+   ],
+   [
+    5618,
+    4872
+   ],
+   [
+    5854,
+    4767
+   ],
+   [
+    6090,
+    4662
+   ],
+   [
+    6326,
+    4568
+   ],
+   [
+    6563,
+    4473
+   ],
+   [
+    6799,
+    4379
+   ],
+   [
+    7035,
+    4284
+   ],
+   [
+    7035,
+    4284
+   ],
+   [
+    7280,
+    4172
+   ],
+   [
+    7525,
+    4060
+   ],
+   [
+    7770,
+    3948
+   ],
+   [
+    8033,
+    3906
+   ],
+   [
+    8295,
+    3864
+   ],
+   [
+    8558,
+    3822
+   ],
+   [
+    8820,
+    3780
+   ],
+   [
+    9100,
+    3780
+   ],
+   [
+    9380,
+    3780
+   ],
+   [
+    9660,
+    3780
+   ],
+   [
+    9940,
+    3780
+   ],
+   [
+    10220,
+    3780
+   ],
+   [
+    10500,
+    3780
+   ],
+   [
+    6405,
+    6510
+   ],
+   [
+    6356,
+    6300
+   ],
+   [
+    6307,
+    6090
+   ],
+   [
+    6258,
+    5880
+   ],
+   [
+    6062,
+    5726
+   ],
+   [
+    5866,
+    5572
+   ],
+   [
+    5670,
+    5418
+   ],
+   [
+    5495,
+    5306
+   ],
+   [
+    5320,
+    5194
+   ],
+   [
+    5145,
+    5082
+   ],
+   [
+    9240,
+    6510
+   ],
+   [
+    9135,
+    6300
+   ],
+   [
+    9030,
+    6090
+   ],
+   [
+    8925,
+    5880
+   ],
+   [
+    8806,
+    5684
+   ],
+   [
+    8687,
+    5488
+   ],
+   [
+    8568,
+    5292
+   ],
+   [
+    8568,
+    5292
+   ],
+   [
+    8372,
+    5103
+   ],
+   [
+    8176,
+    4914
+   ],
+   [
+    7980,
+    4725
+   ],
+   [
+    7744,
+    4615
+   ],
+   [
+    7508,
+    4505
+   ],
+   [
+    7271,
+    4394
+   ],
+   [
+    7035,
+    4284
+   ],
+   [
+    8568,
+    5292
+   ],
+   [
+    8765,
+    5149
+   ],
+   [
+    8963,
+    5006
+   ],
+   [
+    9160,
+    4864
+   ],
+   [
+    9358,
+    4721
+   ],
+   [
+    9555,
+    4578
+   ],
+   [
+    9744,
+    4418
+   ],
+   [
+    9933,
+    4259
+   ],
+   [
+    10122,
+    4099
+   ],
+   [
+    10311,
+    3940
+   ],
+   [
+    10500,
+    3780
+   ],
+   [
+    7098,
+    2352
+   ],
+   [
+    7135,
+    2604
+   ],
+   [
+    7172,
+    2856
+   ],
+   [
+    7208,
+    3108
+   ],
+   [
+    7245,
+    3360
+   ],
+   [
+    7193,
+    3591
+   ],
+   [
+    7140,
+    3822
+   ],
+   [
+    7088,
+    4053
+   ],
+   [
+    7035,
+    4284
+   ]
+  ],
+  "radius": 240,
+  "strength": 0.85,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 10,
+  "points": [
+   [
+    16212,
+    8232
+   ],
+   [
+    16002,
+    8092
+   ],
+   [
+    15792,
+    7952
+   ],
+   [
+    15582,
+    7812
+   ],
+   [
+    15393,
+    7714
+   ],
+   [
+    15204,
+    7616
+   ],
+   [
+    15015,
+    7518
+   ],
+   [
+    15015,
+    7518
+   ],
+   [
+    14805,
+    7571
+   ],
+   [
+    14595,
+    7623
+   ],
+   [
+    14385,
+    7676
+   ],
+   [
+    14175,
+    7728
+   ],
+   [
+    13916,
+    7812
+   ],
+   [
+    13657,
+    7896
+   ],
+   [
+    13398,
+    7980
+   ],
+   [
+    13398,
+    7980
+   ],
+   [
+    13167,
+    7896
+   ],
+   [
+    12936,
+    7812
+   ],
+   [
+    12705,
+    7728
+   ],
+   [
+    12495,
+    7630
+   ],
+   [
+    12285,
+    7532
+   ],
+   [
+    12075,
+    7434
+   ],
+   [
+    12075,
+    7434
+   ],
+   [
+    11865,
+    7508
+   ],
+   [
+    11655,
+    7581
+   ],
+   [
+    11445,
+    7655
+   ],
+   [
+    11235,
+    7728
+   ],
+   [
+    10990,
+    7812
+   ],
+   [
+    10745,
+    7896
+   ],
+   [
+    10500,
+    7980
+   ],
+   [
+    14595,
+    6510
+   ],
+   [
+    14689,
+    6762
+   ],
+   [
+    14784,
+    7014
+   ],
+   [
+    14899,
+    7266
+   ],
+   [
+    15015,
+    7518
+   ],
+   [
+    11760,
+    6510
+   ],
+   [
+    11844,
+    6741
+   ],
+   [
+    11928,
+    6972
+   ],
+   [
+    12001,
+    7203
+   ],
+   [
+    12075,
+    7434
+   ],
+   [
+    13902,
+    9198
+   ],
+   [
+    13853,
+    8932
+   ],
+   [
+    13804,
+    8666
+   ],
+   [
+    13755,
+    8400
+   ],
+   [
+    13576,
+    8190
+   ],
+   [
+    13398,
+    7980
+   ],
+   [
+    15015,
+    7518
+   ],
+   [
+    14779,
+    7424
+   ],
+   [
+    14542,
+    7329
+   ],
+   [
+    14306,
+    7235
+   ],
+   [
+    14070,
+    7140
+   ],
+   [
+    13839,
+    7132
+   ],
+   [
+    13608,
+    7123
+   ],
+   [
+    13377,
+    7115
+   ],
+   [
+    13146,
+    7106
+   ],
+   [
+    12915,
+    7098
+   ],
+   [
+    12705,
+    7182
+   ],
+   [
+    12495,
+    7266
+   ],
+   [
+    12285,
+    7350
+   ],
+   [
+    12075,
+    7434
+   ],
+   [
+    16338,
+    4368
+   ],
+   [
+    16212,
+    4508
+   ],
+   [
+    16086,
+    4648
+   ],
+   [
+    15960,
+    4788
+   ],
+   [
+    15907,
+    4935
+   ],
+   [
+    15855,
+    5082
+   ],
+   [
+    15855,
+    5082
+   ],
+   [
+    15619,
+    4977
+   ],
+   [
+    15382,
+    4872
+   ],
+   [
+    15146,
+    4767
+   ],
+   [
+    14910,
+    4662
+   ],
+   [
+    14674,
+    4568
+   ],
+   [
+    14437,
+    4473
+   ],
+   [
+    14201,
+    4379
+   ],
+   [
+    13965,
+    4284
+   ],
+   [
+    13965,
+    4284
+   ],
+   [
+    13720,
+    4172
+   ],
+   [
+    13475,
+    4060
+   ],
+   [
+    13230,
+    3948
+   ],
+   [
+    12967,
+    3906
+   ],
+   [
+    12705,
+    3864
+   ],
+   [
+    12442,
+    3822
+   ],
+   [
+    12180,
+    3780
+   ],
+   [
+    11900,
+    3780
+   ],
+   [
+    11620,
+    3780
+   ],
+   [
+    11340,
+    3780
+   ],
+   [
+    11060,
+    3780
+   ],
+   [
+    10780,
+    3780
+   ],
+   [
+    10500,
+    3780
+   ],
+   [
+    14595,
+    6510
+   ],
+   [
+    14644,
+    6300
+   ],
+   [
+    14693,
+    6090
+   ],
+   [
+    14742,
+    5880
+   ],
+   [
+    14938,
+    5726
+   ],
+   [
+    15134,
+    5572
+   ],
+   [
+    15330,
+    5418
+   ],
+   [
+    15505,
+    5306
+   ],
+   [
+    15680,
+    5194
+   ],
+   [
+    15855,
+    5082
+   ],
+   [
+    11760,
+    6510
+   ],
+   [
+    11865,
+    6300
+   ],
+   [
+    11970,
+    6090
+   ],
+   [
+    12075,
+    5880
+   ],
+   [
+    12194,
+    5684
+   ],
+   [
+    12313,
+    5488
+   ],
+   [
+    12432,
+    5292
+   ],
+   [
+    12432,
+    5292
+   ],
+   [
+    12628,
+    5103
+   ],
+   [
+    12824,
+    4914
+   ],
+   [
+    13020,
+    4725
+   ],
+   [
+    13256,
+    4615
+   ],
+   [
+    13492,
+    4505
+   ],
+   [
+    13729,
+    4394
+   ],
+   [
+    13965,
+    4284
+   ],
+   [
+    12432,
+    5292
+   ],
+   [
+    12235,
+    5149
+   ],
+   [
+    12037,
+    5006
+   ],
+   [
+    11840,
+    4864
+   ],
+   [
+    11642,
+    4721
+   ],
+   [
+    11445,
+    4578
+   ],
+   [
+    11256,
+    4418
+   ],
+   [
+    11067,
+    4259
+   ],
+   [
+    10878,
+    4099
+   ],
+   [
+    10689,
+    3940
+   ],
+   [
+    10500,
+    3780
+   ],
+   [
+    13902,
+    2352
+   ],
+   [
+    13865,
+    2604
+   ],
+   [
+    13828,
+    2856
+   ],
+   [
+    13792,
+    3108
+   ],
+   [
+    13755,
+    3360
+   ],
+   [
+    13807,
+    3591
+   ],
+   [
+    13860,
+    3822
+   ],
+   [
+    13912,
+    4053
+   ],
+   [
+    13965,
+    4284
+   ]
+  ],
+  "radius": 240,
+  "strength": 0.85,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 11,
+  "points": [
+   [
+    7602,
+    7980
+   ],
+   [
+    5985,
+    7518
+   ],
+   [
+    8925,
+    7434
+   ],
+   [
+    5145,
+    5082
+   ],
+   [
+    7035,
+    4284
+   ],
+   [
+    8568,
+    5292
+   ]
+  ],
+  "radius": 430,
+  "strength": 0.7
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 4,
+  "points": [
+   [
+    4872,
+    7182
+   ],
+   [
+    7602,
+    5775
+   ],
+   [
+    6090,
+    3990
+   ]
+  ],
+  "radius": 520,
+  "strength": 0.9,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 8,
+  "points": [
+   [
+    16128,
+    7182
+   ],
+   [
+    13398,
+    5775
+   ],
+   [
+    14910,
+    3990
+   ]
+  ],
+  "radius": 560,
+  "strength": 0.9,
+  "mirror": false
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 12,
+  "points": [
+   [
+    945,
+    7392
+   ],
+   [
+    1286,
+    7581
+   ],
+   [
+    1628,
+    7770
+   ],
+   [
+    1969,
+    7959
+   ],
+   [
+    2310,
+    8148
+   ],
+   [
+    2310,
+    8148
+   ],
+   [
+    2625,
+    8288
+   ],
+   [
+    2940,
+    8428
+   ],
+   [
+    3255,
+    8568
+   ],
+   [
+    3570,
+    8708
+   ],
+   [
+    3885,
+    8848
+   ],
+   [
+    4200,
+    8988
+   ],
+   [
+    4200,
+    8988
+   ],
+   [
+    4550,
+    9093
+   ],
+   [
+    4900,
+    9198
+   ],
+   [
+    5250,
+    9303
+   ],
+   [
+    5600,
+    9408
+   ],
+   [
+    5950,
+    9513
+   ],
+   [
+    6300,
+    9618
+   ],
+   [
+    6300,
+    9618
+   ],
+   [
+    6650,
+    9681
+   ],
+   [
+    7000,
+    9744
+   ],
+   [
+    7350,
+    9807
+   ],
+   [
+    7700,
+    9870
+   ],
+   [
+    8050,
+    9933
+   ],
+   [
+    8400,
+    9996
+   ],
+   [
+    8400,
+    9996
+   ],
+   [
+    8750,
+    10017
+   ],
+   [
+    9100,
+    10038
+   ],
+   [
+    9450,
+    10059
+   ],
+   [
+    9800,
+    10080
+   ],
+   [
+    10150,
+    10101
+   ],
+   [
+    10500,
+    10122
+   ],
+   [
+    10500,
+    10122
+   ],
+   [
+    8400,
+    1638
+   ],
+   [
+    8085,
+    1733
+   ],
+   [
+    7770,
+    1827
+   ],
+   [
+    7455,
+    1922
+   ],
+   [
+    7140,
+    2016
+   ],
+   [
+    7140,
+    2016
+   ],
+   [
+    6790,
+    2135
+   ],
+   [
+    6440,
+    2254
+   ],
+   [
+    6090,
+    2373
+   ],
+   [
+    5740,
+    2492
+   ],
+   [
+    5390,
+    2611
+   ],
+   [
+    5040,
+    2730
+   ],
+   [
+    5040,
+    2730
+   ],
+   [
+    4746,
+    2890
+   ],
+   [
+    4452,
+    3049
+   ],
+   [
+    4158,
+    3209
+   ],
+   [
+    3864,
+    3368
+   ],
+   [
+    3570,
+    3528
+   ],
+   [
+    3570,
+    3528
+   ],
+   [
+    3255,
+    3738
+   ],
+   [
+    2940,
+    3948
+   ],
+   [
+    2625,
+    4158
+   ],
+   [
+    2310,
+    4368
+   ],
+   [
+    1995,
+    4578
+   ],
+   [
+    1995,
+    4578
+   ],
+   [
+    1722,
+    4763
+   ],
+   [
+    1449,
+    4948
+   ],
+   [
+    1176,
+    5132
+   ],
+   [
+    903,
+    5317
+   ],
+   [
+    630,
+    5502
+   ],
+   [
+    630,
+    5502
+   ]
+  ],
+  "radius": 520,
+  "strength": 0.75
+ },
+ {
+  "tool": "paint_texture",
+  "layer": 8,
+  "points": [
+   [
+    20055,
+    7392
+   ],
+   [
+    18690,
+    8148
+   ],
+   [
+    16800,
+    8988
+   ],
+   [
+    14700,
+    9618
+   ],
+   [
+    12600,
+    9996
+   ],
+   [
+    10500,
+    10122
+   ],
+   [
+    12600,
+    1638
+   ],
+   [
+    13860,
+    2016
+   ],
+   [
+    15960,
+    2730
+   ],
+   [
+    17430,
+    3528
+   ],
+   [
+    19005,
+    4578
+   ],
+   [
+    20370,
+    5502
+   ]
+  ],
+  "radius": 450,
+  "strength": 0.6,
+  "mirror": false
+ },
+ {
+  "tool": "check"
+ },
+ {
+  "tool": "finish",
+  "summary": "Magma Chamber (2010 5v5 'Caldera' concept, Concept 04 layout): a lens-shaped platform over the abyss, frost side (west, blue) and volcanic side (east, red) with the same mirrored layout: top and bottom lanes along the rim and a straight mid, 3 turrets per lane, inhibitors, nexus turrets, a north-south spine joining the Baron pit, the centre and the Dragon pit, six camps per side in clearings off the lanes, teleport pads, icy pools in the west and lava pools in the east, health relics on the rim platforms. Walls are built from Season 1 Crystal Scar / Twisted Treeline scenery (rock formations, frozen trees in the west, charred trees in the east, cliff stones on the rim) with runestone decals and stone torches along the lanes."
+ }
+]
